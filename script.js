@@ -5,7 +5,7 @@ const startBtn = document.getElementById("startBtn");
 const questionText = document.getElementById("question");
 const answersBox = document.getElementById("answers");
 const scoreText = document.getElementById("score");
-const winVideo = document.getElementById("winVidoe");
+const winVideo = document.getElementById("winVideo");
 const loseVideo = document.getElementById("loseVideo");
 
 // Variables that keep track of the game state
@@ -52,6 +52,7 @@ async function startGame() {
     });
 // Shows the first question
     showQuestion();
+
   } catch (error) {
     questionText.textContent = "Could not load trivia questions."; //shows error if page could not load
     console.log(error);
