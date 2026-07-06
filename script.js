@@ -19,10 +19,14 @@ startBtn.addEventListener("click", startGame);
 
 // This starts or restarts the game
 async function startGame() {
-  startBtn.style.display = "none"; // hides the button once started
+  startBtn.style.display = "none";
+  startBtn.classList.remove("play-again");
 
-  winVideo.style.diplay = "none";
+  winVideo.style.display = "none";
   loseVideo.style.display = "none";
+
+  winVideo.src = "";
+  loseVideo.src = "";
 
   score = 0;
   currentQuestionIndex = 0;
@@ -102,6 +106,7 @@ function checkAnswer(selectedAnswer) {
 }
 
 // Runs when the player finishes all questions
+// Runs when the player finishes all questions
 function endGame() {
   questionText.textContent = `Game Over! Final Score: ${score} out of ${questions.length}`;
   answersBox.innerHTML = "";
@@ -110,12 +115,15 @@ function endGame() {
   loseVideo.style.display = "none";
 
   if (score >= 7) {
+    winVideo.src = winVideo.dataset.src;
     winVideo.style.display = "block";
   } else {
+    loseVideo.src = loseVideo.dataset.src;
     loseVideo.style.display = "block";
   }
 
   startBtn.textContent = "PLAY AGAIN";
+  startBtn.classList.add("play-again");
   startBtn.style.display = "block";
 }
 

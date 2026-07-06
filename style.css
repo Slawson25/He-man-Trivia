@@ -57,12 +57,24 @@ body {
 
 .result-video {
   display: none;
-  width: 90%;
-  max-width: 700px;
-  height: 400px;
-  margin: 24px auto;
-  border: 3px solid #ffcc00;
-  border-radius: 12px;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: black;
+}
+
+.play-again {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  animation: none;
+  padding: 14px 22px;
 }
 
 .game-title {
@@ -88,6 +100,18 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.start-text.play-again {
+  position: fixed;
+  bottom: 24px;
+  top: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  animation: none;
+  padding: 14px 22px;
+  white-space: nowrap;
 }
 
 @keyframes blink {
