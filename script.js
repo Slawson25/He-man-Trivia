@@ -5,6 +5,8 @@ const startBtn = document.getElementById("startBtn");
 const questionText = document.getElementById("question");
 const answersBox = document.getElementById("answers");
 const scoreText = document.getElementById("score");
+const winVideo = document.getElementById("winVidoe");
+const loseVideo = document.getElementById("loseVideo");
 
 // Variables that keep track of the game state
 
@@ -18,6 +20,10 @@ startBtn.addEventListener("click", startGame);
 // This starts or restarts the game
 async function startGame() {
   startBtn.style.display = "none"; // hides the button once started
+
+  winVideo.style.diplay = "none";
+  loseVideo.style.display = "none";
+
   score = 0;
   currentQuestionIndex = 0;
 
@@ -98,6 +104,16 @@ function checkAnswer(selectedAnswer) {
 function endGame() {
   questionText.textContent = `Game Over! Final Score: ${score} out of ${questions.length}`;
   answersBox.innerHTML = "";
+
+  winVideo.style.display = "none";
+  loseVideo.style.display = "none";
+
+  if (score >= 7) {
+    winVideo.style.display = "block";
+  } else {
+    loseVideo.style.display = "block";
+  }
+
   startBtn.textContent = "PLAY AGAIN";
   startBtn.style.display = "block";
 }
