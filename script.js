@@ -17,6 +17,12 @@ let score = 0;
 //Starts the game when player pushes start
 startBtn.addEventListener("click", startGame);
 
+const gameTitle = document.querySelector(".game-title");
+gameTitle.style.display = "none";
+startBtn.style.display = "none";
+
+startGame();
+
 // This starts or restarts the game
 async function startGame() {
   startBtn.style.display = "none";
