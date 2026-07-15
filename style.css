@@ -119,3 +119,38 @@ body {
     opacity: 0;
   }
 }
+
+/* Desktop Enhancements */
+@media (min-width: 800px) {
+
+  .game-area {
+    padding-top: 200px;
+    max-width: 900px;        
+  }
+
+  #question {
+    font-size: 24px;       
+  }
+
+  #answers {
+    grid-template-columns: repeat(2, 1fr);  
+    gap: 20px;
+  }
+
+  .answer-btn {
+    font-size: 14px;
+    padding: 20px;
+  }
+
+  .game-title {
+    font-size: 48px;
+    top: 45%;
+    transform: translate(-50%, -120%);
+  }
+
+  .start-text {
+    font-size: 18px;
+    padding: 18px 26px;
+  }
+}
+
