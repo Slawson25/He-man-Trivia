@@ -17,6 +17,7 @@ let score = 0;
 //Starts the game when player pushes start
 startBtn.addEventListener("click", startGame);
 
+// This hides the title when the player clicks start 
 const gameTitle = document.querySelector(".game-title");
 gameTitle.style.display = "none";
 startBtn.style.display = "none";
