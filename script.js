@@ -7,16 +7,21 @@ const winVideo = document.getElementById("winVideo");
 const loseVideo = document.getElementById("loseVideo");
 const resultScreen = document.getElementById("resultScreen");
 const resultTitle = document.getElementById("resultTitle");
+const resultMessage = document.getElementById("resultMessage");
 const playAgainBtn = document.getElementById("playAgainBtn");
 const gameTitle = document.querySelector(".game-title");
+const nameEntry = document.getElementById("nameEntry");
+const playerNameInput = document.getElementById("playerName");
+const nameError = document.getElementById("nameError");
 
 // Variables that keep track of the game state
 let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
+let playerName = "";
 
-// Starts the game when player pushes start
-startBtn.addEventListener("click", startGame);
+// Runs when the player clicks Start — validates the name first
+startBtn.addEventListener("click", attemptStart);
 
 // Restarts the game when player pushes Play Again on the credits screen
 playAgainBtn.addEventListener("click", function () {
@@ -26,16 +31,28 @@ playAgainBtn.addEventListener("click", function () {
   startGame();
 });
 
-// This hides the title/start button on load, since startGame() runs immediately
-gameTitle.style.display = "none";
-startBtn.style.display = "none";
+// Checks that a name was entered before letting the game begin
+function attemptStart() {
+  const name = playerNameInput.value.trim();
 
-startGame();
+  if (!name) {
+    nameError.hidden = false;
+    playerNameInput.focus();
+    return;
+  }
+
+  nameError.hidden = true;
+  playerName = name;
+
+  nameEntry.style.display = "none";
+  gameTitle.style.display = "none";
+  startBtn.style.display = "none";
+
+  startGame();
+}
 
 // This starts or restarts the game
 async function startGame() {
-  startBtn.style.display = "none";
-
   winVideo.style.display = "none";
   loseVideo.style.display = "none";
   winVideo.src = "";
@@ -123,7 +140,9 @@ function checkAnswer(selectedAnswer) {
 
 // Runs when the player finishes all questions
 function endGame() {
-  questionText.textContent = `Game Over! Final Score: ${score} out of ${questions.length}`;
+  const gradeInfo = calculateGrade(score, questions.length); // uses storage.js helper
+
+  questionText.textContent = `Game Over! Final Score: ${score} out of ${questions.length} (${gradeInfo.grade})`;
   answersBox.innerHTML = "";
 
   winVideo.style.display = "none";
@@ -140,6 +159,16 @@ function endGame() {
     loseVideo.style.display = "block";
     resultTitle.textContent = "You Lose! Thanks for playing!";
   }
+
+  resultMessage.textContent = gradeInfo.message;
+
+  // Saves this game's result to localStorage for the High Scores page
+  saveHighScore({
+    name: playerName,
+    score: score,
+    total: questions.length,
+    date: new Date().toLocaleDateString()
+  });
 }
 
 // Function mixes up the answer choices so the correct one is not last

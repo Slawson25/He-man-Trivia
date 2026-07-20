@@ -12,6 +12,11 @@
 <body>
     <h1 class="game-title">80's & 90's TRIVIA</h1>
 
+    <div id="nameEntry" class="name-entry">
+        <input type="text" id="playerName" class="name-input" placeholder="Enter your name" maxlength="20" />
+        <p id="nameError" class="name-error" hidden>Please enter your name to start.</p>
+    </div>
+
     <button id="startBtn" class="start-text">
         PRESS START TO BEGIN
     </button>
@@ -46,13 +51,16 @@
         <!-- Credits layer: this sits over the active video -->
         <section id="creditsPage" class="credits-overlay">
             <h2 id="resultTitle">Thanks for playing!</h2>
+            <p id="resultMessage"></p>
             <p>80's &amp; 90's Trivia</p>
             <p>Created by Shawn</p>
             <button id="playAgainBtn" type="button">Play Again</button>
+            <a href="highscores.html" class="view-scores-link">View High Scores</a>
         </section>
 
     </section>
 
+    <script src="storage.js"></script>
     <script src="script.js"></script>
 </body>
 
