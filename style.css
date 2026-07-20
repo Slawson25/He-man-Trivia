@@ -55,26 +55,66 @@ body {
   margin-top: 30px;
 }
 
-.result-video {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
+/* Full-screen result layer — hidden until the game ends */
+.result-screen {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   z-index: 999;
+  overflow: hidden;
   background: black;
 }
 
-.play-again {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  animation: none;
+/* Both videos fill the result screen, but JavaScript displays only one */
+.result-video {
+  position: absolute;
+  inset: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: black;
+  z-index: 0;
+}
+
+/* Credits sit above the visible video */
+.credits-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 2rem;
+  color: #fff;
+  font-family: "Press Start 2P", cursive;
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: center;
+  background: rgb(0 0 0 / 40%);
+}
+
+.credits-overlay h2 {
+  color: #ffcc00;
+  font-size: 24px;
+  text-shadow: 3px 3px #6b1fb1;
+}
+
+#playAgainBtn {
+  margin-top: 20px;
   padding: 14px 22px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 12px;
+  color: #000;
+  background: #ffcc00;
+  border: 3px solid #6b1fb1;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 /* Base styles (desktop) */
@@ -103,34 +143,6 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* 📱 Mobile adjustment */
-@media (max-width: 600px) {
-  .game-title {
-    font-size: 24px;
-    top: 45%;
-    transform: translate(-50%, -120%);
-  }
-
-  .start-text {
-    font-size: 12px;
-    top: 65%;
-    transform: translate(-50%, -50%);
-  }
-}
-
-
-.start-text.play-again {
-  position: fixed;
-  bottom: 24px;
-  top: auto;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  animation: none;
-  padding: 14px 22px;
-  white-space: nowrap;
-}
-
 @keyframes blink {
   50% {
     opacity: 0;
@@ -149,7 +161,7 @@ body {
   }
 
   #answers {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
     gap: 12px;
   }
 
@@ -169,23 +181,33 @@ body {
     top: 65%;
     transform: translate(-50%, -50%);
   }
-}
 
+  .credits-overlay {
+    font-size: 10px;
+  }
+
+  .credits-overlay h2 {
+    font-size: 18px;
+  }
+
+  #playAgainBtn {
+    font-size: 10px;
+  }
+}
 
 /* Desktop Enhancements */
 @media (min-width: 800px) {
-
   .game-area {
     padding-top: 200px;
-    max-width: 900px;        
+    max-width: 900px;
   }
 
   #question {
-    font-size: 24px;       
+    font-size: 24px;
   }
 
   #answers {
-    grid-template-columns: repeat(2, 1fr);  
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 
@@ -205,4 +227,3 @@ body {
     padding: 18px 26px;
   }
 }
-

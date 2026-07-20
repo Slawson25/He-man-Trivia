@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="styles2.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>80's & 90's Trivia</title>
 </head>
@@ -19,35 +18,40 @@
 
     <section id="gameArea" class="game-area">
         <h2 id="question"></h2>
-
         <div id="answers"></div>
-
         <p id="score">Score: 0</p>
-
-    <figure>
-  <iframe
-    id="winVideo"
-    class="result-video"
-    data-src="https://www.youtube.com/embed/bkEfXxHwSjA?autoplay=1&mute=1"
-    title="Win video"
-    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</figure>
-
-<figure>
-  <iframe
-    id="loseVideo"
-    class="result-video"
-    data-src="https://www.youtube.com/embed/XESJGD0iwZY?autoplay=1&mute=1"
-    title="Lose video"
-    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</figure>
     </section>
 
+    <!-- Hidden until the player wins or loses -->
+    <section id="resultScreen" class="result-screen" hidden>
 
+        <iframe
+            id="winVideo"
+            class="result-video"
+            data-src="https://www.youtube.com/embed/bkEfXxHwSjA?autoplay=1"
+            title="Win video"
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+
+        <iframe
+            id="loseVideo"
+            class="result-video"
+            data-src="https://www.youtube.com/embed/XESJGD0iwZY?autoplay=1"
+            title="Lose video"
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+
+        <!-- Credits layer: this sits over the active video -->
+        <section id="creditsPage" class="credits-overlay">
+            <h2 id="resultTitle">Thanks for playing!</h2>
+            <p>80's &amp; 90's Trivia</p>
+            <p>Created by Shawn</p>
+            <button id="playAgainBtn" type="button">Play Again</button>
+        </section>
+
+    </section>
 
     <script src="script.js"></script>
 </body>
