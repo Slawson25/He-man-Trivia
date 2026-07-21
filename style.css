@@ -288,6 +288,14 @@ body {
 
 /* Desktop Enhancements */
 @media (min-width: 800px) {
+
+  body {
+    background-image: url("img/grayskull.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
   .game-area {
     padding-top: 200px;
     max-width: 900px;
