@@ -65,6 +65,15 @@ body {
   margin-top: 60px;
 }
 
+/* Combined selector — beats .game-title everywhere, including inside media queries,
+   regardless of source order, since it has higher specificity */
+.game-title.small-title {
+  position: static;
+  transform: none;
+  margin-top: 60px;
+  color: #ffcc00;
+}
+
 .highscores-area {
   width: 90%;
   max-width: 700px;
@@ -242,8 +251,8 @@ body {
 
 /* 📱 Mobile adjustments */
 @media (max-width: 799px) {
-  
-  body{
+
+  body {
     background-image: url(img/he-man-masters-of-the-universe-comic-print-wall-art-picture-poster-frame-1739340.webp);
     background-size: cover;
     background-position: center;
@@ -292,7 +301,7 @@ body {
   }
 
   #playAgainBtn {
-    font-size: 10px;
+    font-size: 20px;
   }
 }
 
@@ -306,6 +315,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
+
   .game-area {
     padding-top: 200px;
     max-width: 900px;
@@ -333,6 +343,6 @@ body {
 
   .start-text {
     font-size: 18px;
-    padding: 18px 26px;
+    padding: 18px 30px;
   }
 }
